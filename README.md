@@ -2,6 +2,14 @@
 
 簡単なToDoアプリを作成してみます。まあ、全部ChatGPTですが。
 
+## 起動方法
+
+```shell
+cp .env.example .env
+yarn
+yarn start # launching server
+```
+
 ## ファイルの構造要約
 
 - `src/main.ts` アプリケーションを起動するファイル
@@ -19,6 +27,10 @@
 - `POST` `/todos` ToDoデータ単体挿入
 - `PUT` `/todos/:id` ToDoデータ単体更新
 - `DELETE` `/todos/:id` ToDoデータ単体削除
+
+## DB について
+
+- 初期状態では、Nestjs に保存する方式であった。しかし、サーバーのリロード（dev時はファイルの編集）で全て消えてしまうため、SQLite に保存するように変更しました。
 
 ---
 
