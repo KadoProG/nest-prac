@@ -14,7 +14,7 @@ yarn start # launching server
 
 - `src/main.ts` アプリケーションを起動するファイル
 - `*.module.ts` アプリケーションのルートモジュール
-  - Router とは異なり、controller と provider (service)ファイルを読み込むためのindex的な意味合い
+  - Router とは異なり、controller と provider (service)ファイルを読み込むための index 的な意味合い
   - モジュールを拡張したい場合は`imports`で他のmoduleを入れる
 - `*.controller.ts` HTTP リクエストを処理し、適切なサービスメソッドを呼び出す。Router の記述もここで行う。
 - `*.service.ts` ビジネスロジックを実装する。DB の CRUD 関連はこのファイルで行う。controller から直接呼び出される。
@@ -22,11 +22,17 @@ yarn start # launching server
 
 ## エンドポイント
 
-- `GET` `/todos` ToDoリスト一覧
-- `GET` `/todos/:id` ToDo単体データ取得
-- `POST` `/todos` ToDoデータ単体挿入
-- `PUT` `/todos/:id` ToDoデータ単体更新
-- `DELETE` `/todos/:id` ToDoデータ単体削除
+- `GET` `/todos` ToDo リスト一覧
+  - 返り値：Todo の配列
+- `GET` `/todos/:id` ToDo 単体データ取得
+  - 返り値：ToDo データ
+- `POST` `/todos` ToDo データ単体挿入
+  - `{title: string; description: string; done: boolean}`
+- `PUT` `/todos/:id` ToDo データ単体更新
+  - 存在しない id の場合は`404 Not Found`と表示
+  - `{title: string; description: string; done: boolean}`
+- `DELETE` `/todos/:id` ToDo データ単体削除
+  - 存在しない id の場合は`404 Not Found`と表示
 
 ## DB について
 
