@@ -1,3 +1,27 @@
+# Nestjs を試す！
+
+簡単なToDoアプリを作成してみます。まあ、全部ChatGPTですが。
+
+## ファイルの構造要約
+
+- `src/main.ts` アプリケーションを起動するファイル
+- `*.module.ts` アプリケーションのルートモジュール
+  - Router とは異なり、controller と provider (service)ファイルを読み込むためのindex的な意味合い
+  - モジュールを拡張したい場合は`imports`で他のmoduleを入れる
+- `*.controller.ts` HTTP リクエストを処理し、適切なサービスメソッドを呼び出す。Router の記述もここで行う。
+- `*.service.ts` ビジネスロジックを実装する。DB の CRUD 関連はこのファイルで行う。controller から直接呼び出される。
+- `*.entity.ts` データ構造の定義を行う。
+
+## エンドポイント
+
+- `GET` `/todos` ToDoリスト一覧
+- `GET` `/todos/:id` ToDo単体データ取得
+- `POST` `/todos` ToDoデータ単体挿入
+- `PUT` `/todos/:id` ToDoデータ単体更新
+- `DELETE` `/todos/:id` ToDoデータ単体削除
+
+---
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
