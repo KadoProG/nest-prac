@@ -1,3 +1,4 @@
+// src/todos/todos.controller.ts
 import {
   Controller,
   Get,
@@ -16,17 +17,17 @@ export class TodosController {
   constructor(private readonly todosService: TodosService) {}
 
   @Get()
-  findAll(): Todo[] {
+  findAll(): Promise<Todo[]> {
     return this.todosService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number): Todo {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<Todo> {
     return this.todosService.findOne(id);
   }
 
   @Post()
-  create(@Body() todo: Partial<Todo>): Todo {
+  create(@Body() todo: Partial<Todo>): Promise<Todo> {
     return this.todosService.create(todo);
   }
 
@@ -34,12 +35,12 @@ export class TodosController {
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() todo: Partial<Todo>,
-  ): Todo {
+  ): Promise<Todo> {
     return this.todosService.update(id, todo);
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseIntPipe) id: number): void {
-    this.todosService.delete(id);
+  delete(@Param('id', ParseIntPipe) id: number): Promise<void> {
+    return this.todosService.delete(id);
   }
 }
